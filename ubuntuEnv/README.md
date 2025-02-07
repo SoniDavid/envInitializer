@@ -3,10 +3,11 @@
 ## To Run
 Make the file executable 
 ```bash
-chmod +x macEnvInit.sh
+chmod +x ubuntuEnvInit.sh
 ```
 
 Execute the command 
 ```bash
-./macEnvInit
+./ubuntuEnvInit
 ```
+
