@@ -30,7 +30,7 @@ fi
 # Cask-installed packages.
 cask_packages=("visual-studio-code" "cursor" "discord" "docker")
 # Formula-installed packages.
-formula_packages=("python3" "pyenv")
+formula_packages=("python3" "pyenv" "neovim")
 # Special packages (Rust installed via rustup).
 special_packages=("rust")
 
@@ -115,6 +115,12 @@ install_pyenv() {
     echo "Pyenv installed."
 }
 
+install_neovim() {
+    echo "Installing Neovim..."
+    brew install neovim
+    echo "Neovim installed."
+}
+
 install_rust() {
     echo "Installing Rust..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -178,6 +184,15 @@ main() {
         fi
     fi
 
+
+    if ! is_installed "neovim"; then
+        if prompt "Install Neovim?"; then
+            install_neovim
+        else
+            echo "Skipping Neovim installation."
+        fi
+    fi
+
     if ! is_installed "pyenv"; then
         if prompt "Install Pyenv?"; then
             install_pyenv
@@ -204,7 +219,7 @@ main() {
 }
 
 ###############################
-# Run the main menu
+# Run the main function
 ###############################
 
 main
